@@ -2,6 +2,7 @@ import { ADD_RECIPE, DELETE_RECIPE } from "./Action";
 import { data } from "../Components/Data";
 
 const initialData = data;
+// console.log(initialData)
 
 const RecipeReducer = (state = initialData , action) => {
     switch (action.type) {

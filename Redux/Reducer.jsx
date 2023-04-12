@@ -2,6 +2,6 @@ import { combineReducers } from "redux";
 import RecipeReducer from "./RecipeReducer";
 
 const Reducer = combineReducers({
-    userDetail: RecipeReducer
+    favoriteItem: RecipeReducer
 })
 export default Reducer;

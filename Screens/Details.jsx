@@ -2,29 +2,32 @@ import React from 'react'
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector} from 'react-redux';
 
 
 const Details = ({navigation}) => {
     // const [userInfor, setUserInfor] = useState(user)
-    // 
-    
-    const favorites = useSelector(state => state.favorites);
     const dispatch = useDispatch();
+    // console.log(Data);
+   
 
     const route = useRoute();
     const {user} = route.params;
-    // console.log(userInfor);
 
-    const addToFavorite = (item) => {
-    dispatch({ type: 'ADD_FAVORITE', payload: item });
-     console.log(addToFavorite)
-    }
+
+    const addFavorite = (item) => {
+        dispatch({ type: 'ADD_FAVORITE', payload: item });
+      };
     // navigate
     const goToFavorite = (user) => {
-        addToFavorite(user)
+        addFavorite(user)
           navigation.navigate('favorite', {user:user});
-    },
+        // if(Data.user){
+        //     navigation.navigate('favorite')
+        // };
+    }
+    console.log(goToFavorite)
+
   return (
     <>    
     <TouchableOpacity style={Styles.container}>
