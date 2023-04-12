@@ -11,45 +11,39 @@ const Favorites = () => {
     const dispatch = useDispatch();
     const Data = useSelector(state => state.favoriteItem);
 
-    const addFavirite = (item) => {
-        dispatch({ type: 'ADD_FAVORITE', payload: item });
-    }
-     
 
-    const deleteFavorite = (item) => {
-        dispatch({ type: 'REMOVE_FAVORITE', payload: item });
-    }
-
-    const [userInfor, setUserInfor] = useState(user);
+    // const [userInfor, setUserInfor] = useState(user);
     // console.log(user);
+
+    const deleteFavorite = () => {
+
+    }
 
   
   return (
-    <View style={Styles.container}>
+    <View>
         <Text>Favorites</Text>
         <TouchableOpacity style={Styles.container}>
             {
-             Data.length > 0 ?   Data.map((item) => {
+               Data.map((item) => {
                     return(
-                        <View style={{marginHorizontal: 20, backgroundColor: 'pink', margin: 20}}>
+                        <View>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                               <Text>{item.name}</Text>
+                               <Text style={Styles.name}>{item.name}</Text>
 
-                                <TouchableOpacity onPress={() => deleteFavorite(item)}>
+                                <TouchableOpacity onPress={deleteFavorite}>
                                     <Text>Delete</Text>
                                 </TouchableOpacity>
                             </View>
                             <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-                                <Text>{item.details}</Text>
+                                <Text style={Styles.details}>{item.details}</Text>
                                 <Image  source={item.image} style={{width: 100,height: 100 }}/>
                                 {/*  */}
                                
                             </View>
                         </View>
                     )
-                }): (
-                    <Text>No item found</Text>
-                )
+                })
             }
         </TouchableOpacity>
     </View>
@@ -59,11 +53,21 @@ const Favorites = () => {
 const Styles = StyleSheet.create({
     container: {
         marginTop: '9%',
-        marginHorizontal: 10
+        // marginHorizontal: 10
+        marginHorizontal: 20, 
+        backgroundColor: 'pink', 
+        // marginBottom: 40
     },
     image: {
         width: 150,
         height: 100
+    },
+    details: {
+        marginLeft: 20
+    },
+    name: {
+        fontWeight: 'bold',
+        color: 'white'
     }
 
 })

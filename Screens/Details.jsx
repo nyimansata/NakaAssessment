@@ -6,7 +6,8 @@ import { useDispatch , useSelector} from 'react-redux';
 
 
 const Details = ({navigation}) => {
-    // const [userInfor, setUserInfor] = useState(user)
+    const [userInfor, setUserInfor] = useState(user)
+    const Data = useSelector(state => state.favoriteItem);
     const dispatch = useDispatch();
     // console.log(Data);
    
@@ -14,17 +15,10 @@ const Details = ({navigation}) => {
     const route = useRoute();
     const {user} = route.params;
 
-
-    const addFavorite = (item) => {
-        dispatch({ type: 'ADD_FAVORITE', payload: item });
-      };
     // navigate
     const goToFavorite = (user) => {
-        addFavorite(user)
           navigation.navigate('favorite', {user:user});
-        // if(Data.user){
-        //     navigation.navigate('favorite')
-        // };
+
     }
     console.log(goToFavorite)
 
